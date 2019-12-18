@@ -28,18 +28,32 @@
 <?php }else{ ?>
 <div class="kratos-entry-border-new clearfix">
     <?php if(is_sticky()) echo '<img class="stickyimg" src="'.get_bloginfo('template_directory').'/static/images/sticky.png"/>'; ?>
-    <div class="kratos-entry-thumb-new">
-        <?php kratos_blog_thumbnail_new() ?>
-    </div>
-    <div class="kratos-post-inner-new">
-        <header class="kratos-entry-header-new">
-            <?php $category=get_the_category();if($category) echo '<a class="label" href="'.get_category_link($category[0]->term_id).'">'.$category[0]->cat_name.'</a>'; ?>
-            <h2 class="kratos-entry-title-new"><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h2>
-        </header>
-        <div class="kratos-entry-content-new">
-            <p><?php echo wp_trim_words(get_the_excerpt(),kratos_option('w_num')); ?></p>
+    <?php if(strlen(the_post_thumbnail()) != 0) { ?>
+        <div class="kratos-entry-thumb-new">
+            <?php kratos_blog_thumbnail_new() ?>
         </div>
-    </div>
+        
+        <div class="kratos-post-inner-new">
+            <header class="kratos-entry-header-new">
+                <?php $category=get_the_category();if($category) echo '<a class="label" href="'.get_category_link($category[0]->term_id).'">'.$category[0]->cat_name.'</a>'; ?>
+                <h2 class="kratos-entry-title-new"><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h2>
+            </header>
+            <div class="kratos-entry-content-new">
+                <p><?php echo wp_trim_words(get_the_excerpt(),kratos_option('w_num')); ?></p>
+            </div>
+        </div>
+
+    <?php }else{ ?>
+        <div class="kratos-post-inner-new no-thumb">
+            <header class="kratos-entry-header-new">
+                <?php $category=get_the_category();if($category) echo '<a class="label" href="'.get_category_link($category[0]->term_id).'">'.$category[0]->cat_name.'</a>'; ?>
+                <h2 class="kratos-entry-title-new"><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h2>
+            </header>
+            <div class="kratos-entry-content-new">
+                <p><?php echo wp_trim_words(get_the_excerpt(),kratos_option('w_num')); ?></p>
+            </div>
+        </div>
+    <?php } ?>
     <div class="kratos-post-meta-new">
         <span class="pull-left">
             <a><i class="fa fa-calendar"></i> <?php echo get_the_date(); ?></a>

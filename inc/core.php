@@ -87,6 +87,7 @@ function kratos_theme_scripts(){
     if(!is_admin()){
         wp_enqueue_style('fontawe',$fadir,array(),'4.7.0');
         wp_enqueue_style('kratos',$cssdir.'/static/css/kratos.min.css',array(),KRATOS_VERSION);
+        wp_enqueue_style('kratos-extra',$url2.'/static/css/extra.min.css',array(),KRATOS_VERSION);
         wp_enqueue_script('theme-jq',$jqdir,array(),'2.1.4');
         wp_enqueue_script('theme',$jsdir.'/static/js/theme.min.js',array(),KRATOS_VERSION);
         wp_enqueue_script('kratos',$jsdir.'/static/js/kratos.js',array(),KRATOS_VERSION);
